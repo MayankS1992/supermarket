@@ -25,7 +25,7 @@ public class ConsumerGraph extends JFrame {
 	private JPanel clerkPanel[];
 	private JPanel checkOutsPanel;
 	private JPanel infoPanel;
-	private ProducerGraph cv[][] = new ProducerGraph[checkOuts][maxQueueSize];
+	private ProducerGraphics cv[][] = new ProducerGraphics[checkOuts][maxQueueSize];
 	private Cashier[] consumerArray;
 	private Feeder producerArray;
 	private Timer timer;
@@ -64,7 +64,7 @@ public class ConsumerGraph extends JFrame {
 		{
 			for (int i = 0; i < maxQueueSize; i++) 
 			{
-				cv[count][i] = new ProducerGraph();
+				cv[count][i] = new ProducerGraphics();
 				System.out.println(cv[count][i]);
 				queueLines[count][i].add(cv[count][i]);
 			}
@@ -96,7 +96,7 @@ public class ConsumerGraph extends JFrame {
 				clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
 				clerkPanel[count].add(new JLabel("Utilization :" +List.get(count)));
 				clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
-				clerkPanel[count].add(new JLabel("Average Wait Time :" + c.getStartTime()));
+				
 			}
 			else
 			{
@@ -104,7 +104,7 @@ public class ConsumerGraph extends JFrame {
 				clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
 				clerkPanel[count].add(new JLabel("Utilization :" + List.get(count)));
 				clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
-				clerkPanel[count].add(new JLabel("Average Wait Time :" + c.getStartTime()));
+				
 			}			
 			queue[count] = new JPanel();
 			queue[count].setLayout(new GridLayout(1, maxQueueSize + 1, 2, 1));
@@ -145,17 +145,27 @@ public class ConsumerGraph extends JFrame {
 		getContentPane().add(checkOutsPanel);
 		Calculator c=new Calculator();
 		infoPanel.removeAll();
-		infoPanel.add(new JLabel("no of customers:"+c.getTotalCustomers()));
+		infoPanel.add(new JLabel("no of customers:"));
+		infoPanel.add(new JLabel("<html><div>"+c.getTotalCustomers()+"</div></html>", SwingConstants.CENTER));
 		infoPanel.add(new JLabel("<html><br></html>", SwingConstants.CENTER));
-		infoPanel.add(new JLabel("Lost Customers:"+c.getCustomerLost()));
+		
+		infoPanel.add(new JLabel("Lost Customers:"));
+		infoPanel.add(new JLabel("<html><div>"+c.getCustomerLost()+"</div></html>", SwingConstants.CENTER));
 		infoPanel.add(new JLabel("<html><br></html>", SwingConstants.CENTER));
-		infoPanel.add(new JLabel("no of products"+c.getTotalProducts()));
+		
+		infoPanel.add(new JLabel("no of products"));
+		infoPanel.add(new JLabel("<html><div>"+c.getTotalProducts()+"</div></html>", SwingConstants.CENTER));
 		infoPanel.add(new JLabel("<html><br></html>", SwingConstants.CENTER));
-		infoPanel.add(new JLabel("total wait time for customer:"+ c.waitTime()));
+		
+		infoPanel.add(new JLabel("Average wait time for customer:"));
+		infoPanel.add(new JLabel("<html><div>"+ c.waitTime()+"</div></html>", SwingConstants.CENTER));
 		infoPanel.add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+		
 		infoPanel.add(new JLabel("Average Utilization:"+ c.average()));
 		infoPanel.add(new JLabel("<html><br></html>", SwingConstants.CENTER));
 		infoPanel.add(new JLabel("Average Products per trolly:"+ c.getAverageProductsPerTrolly() ));
+		infoPanel.add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+		infoPanel.add(new JLabel("Total Wait time for customers:"+ c.totTime() ));
 		checkOutsPanel.add(infoPanel);
 	}
 

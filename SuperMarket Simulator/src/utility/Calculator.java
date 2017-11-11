@@ -4,10 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
+/**
+ * @author Mayank
+ * Getters and setters for the calculations
+ */
 public class Calculator {
 	Random random = new Random();
 	float time = 0;
 	float waitingTime = 0; // Total Waiting Time
+	float totalTime = 0;
 	static int lost = 0; // Total Customers Lost
 	static int total = 0; // Total Customers processed
 	static int products = 0; // Total Products processed
@@ -31,7 +37,8 @@ public class Calculator {
 		return startTime;
 	}
 
-	public float waitTime() {
+	public float waitTime()
+	{
 		try {
 			int waitTime = random.nextInt(60);
 			int wait = waitTime;
@@ -44,6 +51,13 @@ public class Calculator {
 		}
 		return waitingTime;
 	}
+	
+	public float totTime()
+	
+	{
+		return waitingTime*total;
+	}
+	
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public List getUtilization() {

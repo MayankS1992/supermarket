@@ -22,10 +22,8 @@ public class Cashier implements Runnable {
 
 	@SuppressWarnings("rawtypes")
 	public Cashier(BlockingQueue q, int index) {
-
 		this.queue = q;
 		this.index = index;
-
 	}
 
 	@SuppressWarnings({ "rawtypes", "unused" })
