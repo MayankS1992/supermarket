@@ -24,6 +24,7 @@ public class Calculator {
 	float startTime = 0;
 	static int averageProductsPerTrolly = 0;
 	static int customerLost = 0;
+	static double totalWaitTime = 0.0;
 
 	public Calculator(long start) {
 		startTime = start;
@@ -46,16 +47,17 @@ public class Calculator {
 			waitingTime = waitingTime + wait;
 			setAverageProductsPerTrolly();
 			waitingTime = waitingTime / total;
+			totalWaitTime = totalWaitTime + waitTime;  // To be Corrected //
 		} catch (InterruptedException ex) {
 
 		}
 		return waitingTime;
 	}
 	
-	public float totTime()
+	public double totTime()
 	
 	{
-		return waitingTime*total;
+		return totalWaitTime;
 	}
 	
 
@@ -153,7 +155,6 @@ public class Calculator {
 		return arrayListOfLostCustomers;
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public int getCustomerLost() {
 		return arrayListOfLostCustomers.size();
 	}

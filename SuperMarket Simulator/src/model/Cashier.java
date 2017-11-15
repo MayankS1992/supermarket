@@ -6,12 +6,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import utility.Calculator;
+import utility.UserInputs;
 
+
+
+/**
+ * @author Mayank
+ *
+ */
 public class Cashier implements Runnable {
 	@SuppressWarnings("rawtypes")
 	private BlockingQueue queue;
 	Calculator c = new Calculator();
 	private long start = System.nanoTime();
+	UserInputs user = new UserInputs();
 	private long sim = 1;
 	public int value;
 	public int time;
@@ -37,9 +45,7 @@ public class Cashier implements Runnable {
 				c.setTotalCustomers();
 				c.setTotalProducts(value);
 				double seconds = time / 1000.0;
-				// c.setTime(time);
 				c.setUtilization(index);
-				// System.out.println("took: "+ value+ " " + Thread.currentThread().getName());
 				Thread.sleep(time * 10 + 20);
 			} catch (InterruptedException ex) {
 				Logger.getLogger(Cashier.class.getName()).log(Level.SEVERE, null, ex);

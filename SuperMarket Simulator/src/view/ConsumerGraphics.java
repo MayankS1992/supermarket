@@ -2,7 +2,11 @@ package view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.*;
 
@@ -11,7 +15,7 @@ import model.Feeder;
 import utility.Calculator;
 import utility.UserInputs;
 
-public class ConsumerGraph extends JFrame {
+public class ConsumerGraphics extends JFrame {
 
 	/**
 	 * 
@@ -30,7 +34,7 @@ public class ConsumerGraph extends JFrame {
 	private Feeder producerArray;
 	private Timer timer;
 
-	public ConsumerGraph(Cashier[] cus, Feeder pp) 
+	public ConsumerGraphics(Cashier[] cus, Feeder pp) 
 	{             
 		consumerArray=cus;
         setProducerArray(pp);		
@@ -39,25 +43,23 @@ public class ConsumerGraph extends JFrame {
 		timer = new Timer(70, new TimerListener());
 		timer.start();
 	}
-
+	
+	  
 	private void createFrame() 
 	{
         this.setTitle(" Checkout Simulation ");
-		this.setSize(1200, 700);// set frame size
-		this.setLocationRelativeTo(null);// set frame start location
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// close
-		this.setResizable(true);// disable resize
+		this.setSize(1200, 700);
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(true);
 	}
 
 	private void createView() 
 	{
-		// Creation of panel for each queue
 		checkOutsPanel = new JPanel();
 		checkOutsPanel.setLayout(new GridLayout(checkOuts + 1, 1, 2, 2));
 		infoPanel();			
-		//Creates 8 Checkouts setting the border and background colors and creates an express checkout lane too
 		createCheckOuts();
-		// add stuff into frame
 		getContentPane().add(checkOutsPanel);
 
 		for (int count = 0; count < checkOuts; count++) 
@@ -75,8 +77,10 @@ public class ConsumerGraph extends JFrame {
 	{	
 		clerkPanel = new JPanel[checkOuts];
 		infoPanel = new JPanel();
-		infoPanel.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-		infoPanel.setBackground(new Color(0,0,182,155));	
+		infoPanel.setLayout(new GridLayout(1, maxQueueSize + 1, 2, 1));
+		infoPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		infoPanel.setBackground(new Color(0,10,182,100));	
+		checkOutsPanel.add(infoPanel);
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -85,6 +89,8 @@ public class ConsumerGraph extends JFrame {
 		Calculator c=new Calculator();
 		ArrayList List = new ArrayList();
 		List = (ArrayList) c.getUtilization();
+		System.out.println(List);
+		ImageIcon counterImg = new ImageIcon("images/checkout.png");
 		for (int count = 0; count < checkOuts; count++) 
 		{
 			clerkPanel[count] = new JPanel();
@@ -95,15 +101,14 @@ public class ConsumerGraph extends JFrame {
 				clerkPanel[count].add(new JLabel("Express Lane " + (count + 1)));
 				clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
 				clerkPanel[count].add(new JLabel("Utilization :" +List.get(count)));
-				clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+				clerkPanel[count].add(new JLabel("", (Icon) counterImg, SwingConstants.CENTER));
 				
 			}
 			else
 			{
-				clerkPanel[count].add(new JLabel("Checkout " + (count + 1)));
-				clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
 				clerkPanel[count].add(new JLabel("Utilization :" + List.get(count)));
 				clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+				clerkPanel[count].add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 				
 			}			
 			queue[count] = new JPanel();
@@ -139,34 +144,31 @@ public class ConsumerGraph extends JFrame {
 	}
 	public void showLive()
 	{
-		checkOutsPanel = new JPanel();
-		checkOutsPanel.setLayout(new GridLayout(checkOuts + 1, 1, 2, 2));
-		createCheckOuts();
-		getContentPane().add(checkOutsPanel);
+		
 		Calculator c=new Calculator();
 		infoPanel.removeAll();
+		
+		infoPanel.setBorder(BorderFactory.createLineBorder(Color.blue));
 		infoPanel.add(new JLabel("no of customers:"));
-		infoPanel.add(new JLabel("<html><div>"+c.getTotalCustomers()+"</div></html>", SwingConstants.CENTER));
-		infoPanel.add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+		infoPanel.add(new JLabel(c.getTotalCustomers()+"", SwingConstants.LEFT));
 		
 		infoPanel.add(new JLabel("Lost Customers:"));
-		infoPanel.add(new JLabel("<html><div>"+c.getCustomerLost()+"</div></html>", SwingConstants.CENTER));
-		infoPanel.add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+		infoPanel.add(new JLabel(c.getCustomerLost()+"", SwingConstants.LEFT));
 		
 		infoPanel.add(new JLabel("no of products"));
-		infoPanel.add(new JLabel("<html><div>"+c.getTotalProducts()+"</div></html>", SwingConstants.CENTER));
-		infoPanel.add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+		infoPanel.add(new JLabel(c.getTotalProducts()+"", SwingConstants.LEFT));
 		
 		infoPanel.add(new JLabel("Average wait time for customer:"));
-		infoPanel.add(new JLabel("<html><div>"+ c.waitTime()+"</div></html>", SwingConstants.CENTER));
-		infoPanel.add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+		infoPanel.add(new JLabel(c.waitTime()+"", SwingConstants.LEFT));
 		
-		infoPanel.add(new JLabel("Average Utilization:"+ c.average()));
-		infoPanel.add(new JLabel("<html><br></html>", SwingConstants.CENTER));
-		infoPanel.add(new JLabel("Average Products per trolly:"+ c.getAverageProductsPerTrolly() ));
-		infoPanel.add(new JLabel("<html><br></html>", SwingConstants.CENTER));
-		infoPanel.add(new JLabel("Total Wait time for customers:"+ c.totTime() ));
-		checkOutsPanel.add(infoPanel);
+		infoPanel.add(new JLabel("Average Utilization:"));
+		infoPanel.add(new JLabel(c.average()+"", SwingConstants.LEFT));
+		
+		infoPanel.add(new JLabel("Average Products per trolly:" ));
+		infoPanel.add(new JLabel(c.getAverageProductsPerTrolly()+"", SwingConstants.LEFT));
+		
+		infoPanel.add(new JLabel("Total Wait time for customers:" ));
+		infoPanel.add(new JLabel(c.totTime()+"", SwingConstants.LEFT));
 	}
 
 	//Timing to refresh queue
@@ -176,10 +178,10 @@ public class ConsumerGraph extends JFrame {
 		{
 			try
 			{
+				checkOutsPanel.revalidate();
+				checkOutsPanel.repaint();
 				showCustomer();
 				showLive();
-				checkOutsPanel.revalidate();
-				checkOutsPanel.repaint();	
 			}
 			catch(Exception e1)
 			{
@@ -192,6 +194,7 @@ public class ConsumerGraph extends JFrame {
     public Feeder getProducerArray() {
 		return producerArray;
 	}
+
 
 	public void setProducerArray(Feeder producerArray) {
 		this.producerArray = producerArray;

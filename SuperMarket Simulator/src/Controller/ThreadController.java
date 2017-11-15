@@ -6,6 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 import model.Cashier;
 import model.Cashier1;
 import model.Cashier2;
@@ -17,7 +18,7 @@ import model.Cashier7;
 import model.Cashier8;
 import model.Feeder;
 import utility.UserInputs;
-import view.ConsumerGraph;
+import view.ConsumerGraphics;
 
 
 /**
@@ -41,11 +42,12 @@ public class ThreadController implements Ithread {
 	int counter = 0;
 
 	@SuppressWarnings({ "rawtypes" })
-	public ThreadController(int maxProducts, int number_of_Checkout) 
+	public ThreadController(int maxProducts, int number_of_Checkout, int simulationTime) 
 	{
 		UserInputs userInputs = new UserInputs();
 		userInputs.setSetNumOfCashiers(number_of_Checkout);
 		userInputs.setMaximumProducts(maxProducts);
+		userInputs.setSimulationTime(simulationTime);
 		
 		int NumOfCashiers = userInputs.getSetNumOfCashiers();
 		Cashier[] consumer = new Cashier[NumOfCashiers];
@@ -106,7 +108,7 @@ public class ThreadController implements Ithread {
 					break;
 				case 8:
 					Cashier8 cons8 = new Cashier8((BlockingQueue) linkedQueues.get(counter), counter);
-					consumer1 = new Thread(cons8);
+					consumer8 = new Thread(cons8);
 					counter++;
 					consumer[7] = cons8;
 					break;
@@ -118,11 +120,10 @@ public class ThreadController implements Ithread {
 		} catch (Exception e) {
 			Logger.getLogger(ThreadController.class.getName()).log(Level.SEVERE, null, e);
 		}
-		System.out.print(consumer);
-		System.out.print(producer);
-
-		ConsumerGraph graphicsObject = new ConsumerGraph(consumer, producer);
+		
+		ConsumerGraphics graphicsObject = new ConsumerGraphics(consumer, producer);
 		graphicsObject.setVisible(true);
+		
 		prodd.start();
 
 		for (int i = 1; i <= NumOfCashiers; i++) {

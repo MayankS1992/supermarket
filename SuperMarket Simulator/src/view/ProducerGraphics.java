@@ -19,8 +19,8 @@ import javax.swing.border.Border;
 public class ProducerGraphics extends JPanel {
 	@SuppressWarnings("unused")
 	final private static Border blackline = BorderFactory.createLineBorder(Color.black);
-	final public static ImageIcon trollyGIF = new ImageIcon("images/trolly.gif");
-	final public JLabel cust = new JLabel("", trollyGIF, SwingConstants.CENTER);
+	final public static ImageIcon img = new ImageIcon("images/cashier.png");
+	final public JLabel cust = new JLabel("", img, SwingConstants.CENTER);
 	final public JLabel noCust = new JLabel("Null");
 	private int c;
 
@@ -29,15 +29,13 @@ public class ProducerGraphics extends JPanel {
 		setBackground(Color.white);
 		setLayout(new BorderLayout());
 		cust.removeAll();
-		cust.revalidate();
-		cust.repaint();
-		JLabel cust = new JLabel("Shopper", trollyGIF, SwingConstants.CENTER);
+		JLabel cust = new JLabel("Shopper", img, SwingConstants.CENTER);
 		setBorder(blackline);
 		c = 0;
-		addToPanel();
+		addIcon();
 	}
 	
-	public void addToPanel() {
+	public void addIcon() {
 		removeAll(); // Clear panel
 		if (c != 0) {
 			add(cust);
@@ -50,7 +48,7 @@ public class ProducerGraphics extends JPanel {
 
 	public void setCustomer(int cc) {
 		c = cc;
-		addToPanel();
+		addIcon();
 	}
 
 	public int getNumberOfGoods() {

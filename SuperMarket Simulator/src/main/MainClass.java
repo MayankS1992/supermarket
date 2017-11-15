@@ -1,24 +1,37 @@
 package main;
 
-import java.io.IOException;
+
+import java.awt.Color;
+
+import javax.swing.UIManager;
 
 import view.TopLevelWindow;
-
 
 /**
  * @author Mayank
  * 
- * Entry point of the code.
+ *         Entry point of the code.
  *
  */
 public class MainClass {
-	@SuppressWarnings("unused")
+
 	public static void main(String args[]) {
+		
 		try {
-			TopLevelWindow entryPoint = new TopLevelWindow();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+
+					UIManager.setLookAndFeel(info.getClassName());
+					
+					UIManager.getLookAndFeelDefaults().put("Panel.background", Color.LIGHT_GRAY.brighter());
+					
+					TopLevelWindow entryPoint = new TopLevelWindow();
+					
+					break;
+				}
+			}
+		} catch (Exception e) {
+			// If Nimbus is not available, you can set the GUI to another look and feel.
 		}
 	}
 }

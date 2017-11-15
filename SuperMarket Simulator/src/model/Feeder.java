@@ -44,7 +44,7 @@ public class Feeder implements Runnable {
 						calculations.setCustomerLost(MaxNumOfProducts);
 						int waitTime = random.nextInt(60);
 						int wait = waitTime;
-						Thread.sleep(wait + 700);
+						Thread.sleep(wait + 7000);
 					} else {
 						queue[0].put(productsInCart);
 						calculations.waitTime();
@@ -55,7 +55,7 @@ public class Feeder implements Runnable {
 						calculations.setCustomerLost(MaxNumOfProducts);
 						int waitTime = random.nextInt(60);
 						int wait = waitTime;
-						Thread.sleep(wait + 700);
+						Thread.sleep(wait + 7000);
 					} else {
 						minimum(queue).put(productsInCart);
 						calculations.waitTime();

@@ -28,11 +28,16 @@ import Controller.Ithread;
  */
 
 public class TopLevelWindow {
+	/**
+	 * @throws IOException
+	 */
 	public TopLevelWindow() throws IOException {
 
 		// Create and set up the window.
-		JFrame frame = new JFrame("SuperMarket Simulator");
-		frame.setSize(800, 400);
+		
+		Labels label = new Labels();
+		JFrame frame = new JFrame(label.getAppHeader());
+		frame.setSize(280, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel = new JPanel();
 		panel.setVisible(true);
@@ -41,7 +46,7 @@ public class TopLevelWindow {
 		frame.add(panel);
 		
 		frame.setVisible(true);
-		JLabel Number_of_Checkouts = new JLabel("Number of Checkouts");
+		JLabel Number_of_Checkouts = new JLabel(label.getHeader1());
 		Number_of_Checkouts.setBounds(10, 10, 80, 25);
 		Number_of_Checkouts.setVisible(true);
 		panel.add(Number_of_Checkouts);
@@ -51,7 +56,7 @@ public class TopLevelWindow {
 		Number_of_Checkout.setVisible(true);
 		panel.add(Number_of_Checkout);
 
-		JLabel passwordLabel = new JLabel("Max Products");
+		JLabel passwordLabel = new JLabel(label.getHeader2());
 		passwordLabel.setBounds(10, 40, 80, 25);
 		passwordLabel.setVisible(true);
 		panel.add(passwordLabel);
@@ -60,22 +65,29 @@ public class TopLevelWindow {
 		maxProducts.setBounds(100, 40, 160, 25);
 		maxProducts.setVisible(true);
 		panel.add(maxProducts);
+		
+		JLabel simulationTime = new JLabel(label.getHeader3());
+		simulationTime.setBounds(10, 40, 80, 25);
+		simulationTime.setVisible(true);
+		panel.add(simulationTime);
 
-		JButton loginButton = new JButton("Simulate");
-		loginButton.setBounds(10, 80, 80, 25);
-		loginButton.setVisible(true);
-		panel.add(loginButton);
+		JTextField simulationTimeField = new JTextField(20);
+		simulationTimeField.setBounds(100, 40, 160, 25);
+		simulationTimeField.setVisible(true);
+		panel.add(simulationTimeField);
 
-		JButton registerButton = new JButton("Close");
-		registerButton.setBounds(180, 80, 80, 25);
-		panel.add(registerButton);
-//		frame.getContentPane().setSize(399,399);
-//		frame.getContentPane().setSize(400,400);
+		JButton simulate = new JButton(label.getButton1());
+		simulate.setBounds(10, 80, 80, 25);
+		simulate.setVisible(true);
+		panel.add(simulate);
+
+		JButton closeButton = new JButton(label.getButton2());
+		closeButton.setBounds(180, 80, 80, 25);
+		panel.add(closeButton);
 		frame.revalidate();
 		frame.repaint();
-		frame.pack();
 
-		loginButton.addActionListener(new ActionListener() {
+		simulate.addActionListener(new ActionListener() {
 			public int parserValues(JTextField input) {
 				int value = Integer.parseInt(input.getText());
 				return value;
@@ -89,13 +101,32 @@ public class TopLevelWindow {
 				} else {
 					exec.scheduleAtFixedRate(new Runnable() {
 						public void run() {
-							Ithread.threadinstantiate(parserValues(maxProducts), parserValues(Number_of_Checkout));
+							Ithread.threadinstantiate(parserValues(maxProducts), parserValues(Number_of_Checkout), parserValues(simulationTimeField));
 						}
 					}, 0, 5, TimeUnit.SECONDS);
 				}
 
 			}
 		});
+		
+		/**
+		 * 
+		 * Closes the window on click of close
+		 * 
+		 * 
+		 */
+		
+		closeButton.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				
+				System.exit(0);
+				
+			}
+		});
+		
+		
+		
 
 	}
 	
