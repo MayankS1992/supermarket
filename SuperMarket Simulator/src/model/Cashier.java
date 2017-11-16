@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.logging.Level;
@@ -7,8 +8,6 @@ import java.util.logging.Logger;
 
 import utility.Calculator;
 import utility.UserInputs;
-
-
 
 /**
  * @author Mayank
@@ -27,6 +26,7 @@ public class Cashier implements Runnable {
 	Random random = new Random();
 	int rand, times = 0;
 	Calculator c1 = new Calculator(start);
+	HashMap<Integer, String> customer = new HashMap<Integer, String>();
 
 	@SuppressWarnings("rawtypes")
 	public Cashier(BlockingQueue q, int index) {
@@ -39,9 +39,14 @@ public class Cashier implements Runnable {
 	public void run() {
 		while ((System.nanoTime() - start) <= (sim * 60000000000L))
 			try {
+				int i = 0;
 				rand = random.nextInt(5) + 1;
 				value = (int) ((BlockingQueue) queue).take();
 				time = value * rand;
+				c.setCustomerHistory(i, time);
+				customer.put(i, String.valueOf(time));
+				System.out.println(c.getCustomerHistory());
+				i++;
 				c.setTotalCustomers();
 				c.setTotalProducts(value);
 				double seconds = time / 1000.0;

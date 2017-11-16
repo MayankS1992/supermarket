@@ -121,6 +121,14 @@ public class ThreadController implements Ithread {
 			Logger.getLogger(ThreadController.class.getName()).log(Level.SEVERE, null, e);
 		}
 		
+		
+		/*
+		 * 
+		 * The Consumer Graphics Constructor 
+		 * with the consumer and producer 
+		 * objects for graphics creation
+		 * 
+		 * */
 		ConsumerGraphics graphicsObject = new ConsumerGraphics(consumer, producer);
 		graphicsObject.setVisible(true);
 		

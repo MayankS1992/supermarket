@@ -1,25 +1,42 @@
 package utility;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-
 /**
- * @author Mayank
- * Getters and setters for the calculations
+ * @author Mayank Getters and setters for the calculations
  */
 public class Calculator {
+
 	Random random = new Random();
+
 	float time = 0;
-	float waitingTime = 0; // Total Waiting Time
+
+	/* Total Waiting Time */
+	float waitingTime = 0;
+
 	float totalTime = 0;
-	static int lost = 0; // Total Customers Lost
-	static int total = 0; // Total Customers processed
-	static int products = 0; // Total Products processed
+
+	/* Total Customers Lost */
+	static int lost = 0;
+
+	/* Total Customers processed */
+	static int total = 0;
+
+	/* Total Products processed */
+	static int products = 0;
+
 	static int a[] = new int[8];
+
 	UserInputs userInputs = new UserInputs();
-	int checkout = userInputs.getSetNumOfCashiers(); // Number of Checkouts
+
+	HashMap<Integer, String> customer = new HashMap<Integer, String>();
+
+	/* Number of Checkouts */
+	int checkout = userInputs.getSetNumOfCashiers();
+
 	static int sum;
 	float startTime = 0;
 	static int averageProductsPerTrolly = 0;
@@ -38,8 +55,7 @@ public class Calculator {
 		return startTime;
 	}
 
-	public float waitTime()
-	{
+	public float waitTime() {
 		try {
 			int waitTime = random.nextInt(60);
 			int wait = waitTime;
@@ -47,24 +63,23 @@ public class Calculator {
 			waitingTime = waitingTime + wait;
 			setAverageProductsPerTrolly();
 			waitingTime = waitingTime / total;
-			totalWaitTime = totalWaitTime + waitTime;  // To be Corrected //
+			totalWaitTime = totalWaitTime + waitTime; // To be Corrected //
 		} catch (InterruptedException ex) {
 
 		}
 		return waitingTime;
 	}
-	
+
 	public double totTime()
-	
+
 	{
 		return totalWaitTime;
 	}
-	
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List getUtilization() {
+	public List<Integer> getUtilization() {
 		int i = 0;
-		List arrayList = new ArrayList();
+		List<Integer> arrayList = new ArrayList<Integer>();
 		for (i = 0; i < checkout; i++) {
 			arrayList.add(a[i]);
 		}
@@ -146,10 +161,10 @@ public class Calculator {
 	}
 
 	@SuppressWarnings("rawtypes")
-	private static List arrayListOfLostCustomers = new ArrayList();
+	private static List<Integer> arrayListOfLostCustomers = new ArrayList<Integer>();
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public List setCustomerLost(int maxNumOfProducts) {
+	public List<Integer> setCustomerLost(int maxNumOfProducts) {
 
 		arrayListOfLostCustomers.add(maxNumOfProducts);
 		return arrayListOfLostCustomers;
@@ -157,5 +172,14 @@ public class Calculator {
 
 	public int getCustomerLost() {
 		return arrayListOfLostCustomers.size();
+	}
+
+	public HashMap<Integer, String> getCustomerHistory() {
+		return customer;
+	}
+
+	public void setCustomerHistory(int i, int time2) {
+		customer.put(i, String.valueOf(time));
+
 	}
 }

@@ -11,9 +11,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 /**
- * @author Mayank
- * The Class responsible for generation of graphics for the customers.
- * Displays an icon where a customer is present and when the customer is absent shows null.
+ * @author Mayank The Class responsible for generation of graphics for the
+ *         customers. Displays an icon where a customer is present and when the
+ *         customer is absent shows null.
  */
 @SuppressWarnings("serial")
 public class ProducerGraphics extends JPanel {
@@ -34,7 +34,7 @@ public class ProducerGraphics extends JPanel {
 		c = 0;
 		addIcon();
 	}
-	
+
 	public void addIcon() {
 		removeAll(); // Clear panel
 		if (c != 0) {

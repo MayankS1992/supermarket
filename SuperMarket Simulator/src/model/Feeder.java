@@ -9,8 +9,7 @@ import utility.Calculator;
 import utility.UserInputs;
 
 /**
- * @author Mayank
- * The Feeder class has the run methods for the producer Threads.
+ * @author Mayank The Feeder class has the run methods for the producer Threads.
  *
  */
 public class Feeder implements Runnable {
@@ -70,12 +69,13 @@ public class Feeder implements Runnable {
 	/**
 	 * 
 	 * Find the shortest queue for the Customer
-	 * @param queue2 : denotes the customer queues
+	 * 
+	 * @param queue2
+	 *            : denotes the customer queues
 	 * @return queue[index] : The queue and its position
 	 */
 	@SuppressWarnings("rawtypes")
-	
-	
+
 	private BlockingQueue minimum(BlockingQueue[] queue2) {
 		int min = queue[1].size();
 		for (int count = 1; count < queue.length; count++) {
