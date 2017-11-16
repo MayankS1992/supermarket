@@ -12,8 +12,6 @@ public class Calculator {
 
 	Random random = new Random();
 
-	float time = 0;
-
 	/* Total Waiting Time */
 	float waitingTime = 0;
 
@@ -31,8 +29,6 @@ public class Calculator {
 	static int a[] = new int[8];
 
 	UserInputs userInputs = new UserInputs();
-
-	HashMap<Integer, String> customer = new HashMap<Integer, String>();
 
 	/* Number of Checkouts */
 	int checkout = userInputs.getSetNumOfCashiers();
@@ -70,9 +66,7 @@ public class Calculator {
 		return waitingTime;
 	}
 
-	public double totTime()
-
-	{
+	public double totTime()	{
 		return totalWaitTime;
 	}
 
@@ -93,14 +87,6 @@ public class Calculator {
 		sum = sum / checkout;
 		setAverage(sum);
 		return sum;
-	}
-
-	public synchronized void setLoss() {
-		lost++;
-	}
-
-	public int getLoss() {
-		return lost;
 	}
 
 	private void setAverage(int sum2) {
@@ -174,12 +160,4 @@ public class Calculator {
 		return arrayListOfLostCustomers.size();
 	}
 
-	public HashMap<Integer, String> getCustomerHistory() {
-		return customer;
-	}
-
-	public void setCustomerHistory(int i, int time2) {
-		customer.put(i, String.valueOf(time));
-
-	}
 }
