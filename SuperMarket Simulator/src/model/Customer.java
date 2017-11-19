@@ -6,8 +6,8 @@ public class Customer {
 
 	int numberOfProducts;
 	int waitTime;
-	long entryTime;
-	long exitTime;
+	static long entryTime;
+	static long exitTime;
 	long waitTimeCustomer;
 	static int total;
 
@@ -47,6 +47,7 @@ public class Customer {
 		int rand = random.nextInt(6) + 1;
 		waitTime = (products * rand);
 		System.out.println(waitTime+"Products"+products);
+
 	}
 
 	/**
@@ -75,7 +76,13 @@ public class Customer {
 	 */
 	public void setExitTime(long end) {
 		this.exitTime = end;
-		long waitTimeCustomer = ((exitTime - entryTime) / 1000);
+		//long waitTimeCustomer = ((exitTime - entryTime) / 1000);
+	}
+
+	public long timeDiff()
+	{
+		System.out.println("Chandan"+((this.exitTime-this.entryTime)/1000));
+		return (exitTime-entryTime)/1000;
 	}
 
 	/**

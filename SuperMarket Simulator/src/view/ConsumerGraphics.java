@@ -211,7 +211,7 @@ public class ConsumerGraphics extends JFrame {
 			// SwingConstants.LEFT));
 
 			infoPanel.add(new JLabel("Total Wait time for customers:"));
-			infoPanel.add(new JLabel(c.totTime() + "", SwingConstants.LEFT));
+			infoPanel.add(new JLabel(ca.timeDiff() + "", SwingConstants.LEFT));
 
 			infoPanel.setFont(font);
 		} catch (Exception e) {

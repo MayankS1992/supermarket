@@ -37,6 +37,7 @@ public class Cashier1 extends Cashier implements Runnable {
 				int time = customer.getWaitTime();
 				long end = System.currentTimeMillis();
 				customer.setExitTime(end);
+
 				value = (Customer) ((BlockingQueue) queue).take();
 				if (value != null) {
 					Thread.sleep(time + 1000);
@@ -49,6 +50,7 @@ public class Cashier1 extends Cashier implements Runnable {
 				customerHistory.setCustomerHistory(customer.getNumberOfProducts(), time+1000);
 				Cashier.setTotalProductsProcessed1(customer.getNumberOfProducts());
 				c.setUtilization(index);
+				customer.timeDiff();
 
 			} catch (InterruptedException | IOException ex) {
 				Logger.getLogger(Cashier.class.getName()).log(Level.SEVERE, null, ex);
