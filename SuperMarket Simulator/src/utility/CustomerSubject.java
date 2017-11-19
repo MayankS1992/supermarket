@@ -1,5 +1,6 @@
 package utility;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -19,8 +20,8 @@ public class CustomerSubject {
 		return customer;
 	}
 
-	public void setCustomerHistory(int i, int waitTime) {
-		customer.put(String.valueOf(i), String.valueOf(waitTime));
+	public void setCustomerHistory(int products, int waitTime) throws IOException {
+		customer.put(String.valueOf(products), String.valueOf(waitTime));
 		notifyAllObservers();
 	}
 	
@@ -28,15 +29,10 @@ public class CustomerSubject {
 	      observers.add(observer);		
 	   }
 
-	   public void notifyAllObservers(){
+	   public void notifyAllObservers() throws IOException{
 	      for (Observer observer : observers) {
 	         observer.update();
 	      }
 	   }
-
-	public Object lastEntry() {
-		// TODO Auto-generated method stub
-		return null;
-	} 
 
 }

@@ -19,11 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import Controller.Ithread;
 
-
-
 /**
- * @author Mayank
- * Graphics for the User Input page.
+ * @author Mayank Graphics for the User Input page.
  *
  */
 
@@ -34,17 +31,17 @@ public class TopLevelWindow {
 	public TopLevelWindow() throws IOException {
 
 		// Create and set up the window.
-		
+
 		Labels label = new Labels();
 		JFrame frame = new JFrame(label.getAppHeader());
 		frame.setSize(280, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel = new JPanel();
 		panel.setVisible(true);
-		
+
 		frame.getContentPane().add(new JPanelWithBackground("images/bg.jpg"));
 		frame.add(panel);
-		
+
 		frame.setVisible(true);
 		JLabel Number_of_Checkouts = new JLabel(label.getHeader1());
 		Number_of_Checkouts.setBounds(10, 10, 80, 25);
@@ -65,7 +62,7 @@ public class TopLevelWindow {
 		maxProducts.setBounds(100, 40, 160, 25);
 		maxProducts.setVisible(true);
 		panel.add(maxProducts);
-		
+
 		JLabel simulationTime = new JLabel(label.getHeader3());
 		simulationTime.setBounds(10, 40, 80, 25);
 		simulationTime.setVisible(true);
@@ -97,62 +94,59 @@ public class TopLevelWindow {
 				System.out.println("Button was clicked");
 				ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
 				if (parserValues(maxProducts) > 200 || parserValues(Number_of_Checkout) > 8) {
-					JOptionPane.showMessageDialog(null, "Please enter the data in the defined range", "ALERT", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Please enter the data in the defined range", "ALERT",
+							JOptionPane.WARNING_MESSAGE);
 				} else {
 					exec.scheduleAtFixedRate(new Runnable() {
 						public void run() {
-							Ithread.threadinstantiate(parserValues(maxProducts), parserValues(Number_of_Checkout), parserValues(simulationTimeField));
+							Ithread.threadinstantiate(parserValues(maxProducts), parserValues(Number_of_Checkout),
+									parserValues(simulationTimeField));
 						}
 					}, 0, 5, TimeUnit.SECONDS);
 				}
 
 			}
 		});
-		
+
 		/**
 		 * 
 		 * Closes the window on click of close
 		 * 
 		 * 
 		 */
-		
+
 		closeButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				
+
 				System.exit(0);
-				
+
 			}
 		});
-		
-		
-		
 
 	}
-	
-	
+
 	/**
-	 * @author Mayank
-	 * Draws a background Image
+	 * @author Mayank Draws a background Image
 	 */
 	@SuppressWarnings("serial")
-	
+
 	public class JPanelWithBackground extends JPanel {
 
-		  private Image backgroundImage;
+		private Image backgroundImage;
 
-		  // Some code to initialize the background image.
-		  // Here, we use the constructor to load the image. This
-		  // can vary depending on the use case of the panel.
-		  public JPanelWithBackground(String fileName) throws IOException {
-		    backgroundImage = ImageIO.read(new File(fileName));
-		  }
-
-		  public void paintComponent(Graphics g) {
-		    super.paintComponent(g);
-
-		    // Draw the background image.
-		    g.drawImage(backgroundImage, 0, 0, this);
-		  }
+		// Some code to initialize the background image.
+		// Here, we use the constructor to load the image. This
+		// can vary depending on the use case of the panel.
+		public JPanelWithBackground(String fileName) throws IOException {
+			backgroundImage = ImageIO.read(new File(fileName));
 		}
+
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+
+			// Draw the background image.
+			g.drawImage(backgroundImage, 0, 0, this);
+		}
+	}
 }

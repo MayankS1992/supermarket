@@ -36,28 +36,46 @@ public class Feeder implements Runnable {
 		while ((System.nanoTime() - start) <= (sim * 60000000000L))
 
 			try {
-				productsInCart = random.nextInt(MaxNumOfProducts) + 1;
-				qu = minimum(queue); // Smallest Queue generated
-				if (productsInCart < 10) {
-					if (queue[0].size() >= 6) {
-						calculations.setCustomerLost(MaxNumOfProducts);
-						int waitTime = random.nextInt(60);
-						int wait = waitTime;
-						Thread.sleep(wait + 7000);
-					} else {
-						queue[0].put(productsInCart);
-						calculations.waitTime();
-					}
 
-				} else {
-					if (qu.size() >= 6) {
+				// productsInCart = random.nextInt(MaxNumOfProducts) + 1;
+				qu = minimum(queue); // Smallest Queue generated
+				Customer customer = new Customer();
+				customer.setNumberOfProducts(MaxNumOfProducts);
+				customer.setWaitTime(customer.getNumberOfProducts());
+
+				//
+				// Express Queue
+				//
+				if (customer.getNumberOfProducts() < 10) {
+					if (queue[0].size() >= 6) {
+
 						calculations.setCustomerLost(MaxNumOfProducts);
-						int waitTime = random.nextInt(60);
-						int wait = waitTime;
-						Thread.sleep(wait + 7000);
+						// Frequency of express customers//
+						int waitTime = random.nextInt(250);
+						Thread.sleep(waitTime + 100);
 					} else {
-						minimum(queue).put(productsInCart);
-						calculations.waitTime();
+
+						// Customer is put inside the queue
+						long start = System.currentTimeMillis();
+						customer.setEntryTime(start);
+						queue[0].put(customer);
+						// calculations.waitTime();
+						int waitTime = random.nextInt(5);
+						Thread.sleep(waitTime + 100);
+					}
+					// Products in Cart more than 10
+				} else if (customer.getNumberOfProducts() > 10) {
+					if (qu.size() >= 6) {
+
+						calculations.setCustomerLost(MaxNumOfProducts);
+						int waitTime = random.nextInt(250);
+						Thread.sleep(waitTime + 100);
+					} else {
+						long start = System.currentTimeMillis();
+						minimum(queue).put(customer);
+						// calculations.waitTime();
+						int waitTime = random.nextInt(260);
+						Thread.sleep(waitTime + 100);
 					}
 				}
 			} catch (InterruptedException ex) {

@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
+import model.Customer;
+
 /**
  * @author Mayank The Class responsible for generation of graphics for the
  *         customers. Displays an icon where a customer is present and when the
@@ -23,6 +25,7 @@ public class ProducerGraphics extends JPanel {
 	final public JLabel cust = new JLabel("", img, SwingConstants.CENTER);
 	final public JLabel noCust = new JLabel("Null");
 	private int c;
+	Customer customer = new Customer();
 
 	@SuppressWarnings("unused")
 	public ProducerGraphics() {
@@ -46,8 +49,8 @@ public class ProducerGraphics extends JPanel {
 		}
 	}
 
-	public void setCustomer(int cc) {
-		c = cc;
+	public void setCustomer(Customer customer) {
+		c = customer.getNumberOfProducts();
 		addIcon();
 	}
 

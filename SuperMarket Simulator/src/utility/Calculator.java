@@ -1,7 +1,6 @@
 package utility;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -28,6 +27,9 @@ public class Calculator {
 
 	static int a[] = new int[8];
 
+	static int utilization1, utilization2, utilization3, utilization4, utilization5, utilization6, utilization7,
+			utilization8 = 0;
+
 	UserInputs userInputs = new UserInputs();
 
 	/* Number of Checkouts */
@@ -51,22 +53,19 @@ public class Calculator {
 		return startTime;
 	}
 
-	public float waitTime() {
-		try {
-			int waitTime = random.nextInt(60);
-			int wait = waitTime;
-			Thread.sleep(wait + 100);
-			waitingTime = waitingTime + wait;
-			setAverageProductsPerTrolly();
-			waitingTime = waitingTime / total;
-			totalWaitTime = totalWaitTime + waitTime; // To be Corrected //
-		} catch (InterruptedException ex) {
+	// public float waitTime() {
+	// int waitTime = random.nextInt(60);
+	//// int wait = waitTime;
+	//// Thread.sleep(wait + 100);
+	// waitingTime = waitingTime + waitTime;
+	// setAverageProductsPerTrolly();
+	// waitingTime = waitingTime / total;
+	// totalWaitTime = totalWaitTime + waitTime; // To be Corrected //
+	//
+	// return waitingTime;
+	// }
 
-		}
-		return waitingTime;
-	}
-
-	public double totTime()	{
+	public double totTime() {
 		return totalWaitTime;
 	}
 
@@ -122,14 +121,6 @@ public class Calculator {
 		a[index] += 1;
 	}
 
-	public static int getProducts() {
-		return products;
-	}
-
-	public static void setProducts(int products) {
-		Calculator.products = products;
-	}
-
 	public static int[] getA() {
 		return a;
 	}
@@ -138,13 +129,13 @@ public class Calculator {
 		Calculator.a = a;
 	}
 
-	public int getAverageProductsPerTrolly() {
-		return averageProductsPerTrolly;
-	}
-
-	public void setAverageProductsPerTrolly() {
-		averageProductsPerTrolly = products / total;
-	}
+	// public int getAverageProductsPerTrolly() {
+	// return averageProductsPerTrolly;
+	// }
+	//
+	// public void setAverageProductsPerTrolly() {
+	// averageProductsPerTrolly = products / total;
+	// }
 
 	@SuppressWarnings("rawtypes")
 	private static List<Integer> arrayListOfLostCustomers = new ArrayList<Integer>();
@@ -158,6 +149,126 @@ public class Calculator {
 
 	public int getCustomerLost() {
 		return arrayListOfLostCustomers.size();
+	}
+
+	/**
+	 * @return the utilization1
+	 */
+	public synchronized static int getUtilization1() {
+		return utilization1;
+	}
+
+	/**
+	 * @param utilization1
+	 *            the utilization1 to set
+	 */
+	public synchronized static void setUtilization1() {
+		utilization1++;
+	}
+
+	/**
+	 * @return the utilization2
+	 */
+	public synchronized static int getUtilization2() {
+		return utilization2;
+	}
+
+	/**
+	 * @param utilization2
+	 *            the utilization2 to set
+	 */
+	public synchronized static void setUtilization2() {
+		utilization2++;
+	}
+
+	/**
+	 * @return the utilization3
+	 */
+	public synchronized static int getUtilization3() {
+		return utilization3;
+	}
+
+	/**
+	 * @param utilization3
+	 *            the utilization3 to set
+	 */
+	public synchronized static void setUtilization3() {
+		utilization3++;
+	}
+
+	/**
+	 * @return the utilization4
+	 */
+	public synchronized static int getUtilization4() {
+		return utilization4;
+	}
+
+	/**
+	 * @param utilization4
+	 *            the utilization4 to set
+	 */
+	public synchronized static void setUtilization4() {
+		utilization4++;
+	}
+
+	/**
+	 * @return the utilization5
+	 */
+	public synchronized static int getUtilization5() {
+		return utilization5;
+	}
+
+	/**
+	 * @param utilization5
+	 *            the utilization5 to set
+	 */
+	public synchronized static void setUtilization5() {
+		utilization5++;
+	}
+
+	/**
+	 * @return the utilization6
+	 */
+	public synchronized static int getUtilization6() {
+		return utilization6;
+	}
+
+	/**
+	 * @param utilization6
+	 *            the utilization6 to set
+	 */
+	public synchronized static void setUtilization6() {
+		utilization6++;
+	}
+
+	/**
+	 * @return the utilization7
+	 */
+	public synchronized static int getUtilization7() {
+		return utilization7;
+	}
+
+	/**
+	 * @param utilization7
+	 *            the utilization7 to set
+	 */
+	public synchronized static void setUtilization7() {
+		utilization7++;
+	}
+
+	/**
+	 * @return the utilization8
+	 */
+	public synchronized static int getUtilization8() {
+		return utilization8;
+	}
+
+	/**
+	 * @param utilization8
+	 *            the utilization8 to set
+	 */
+	public synchronized static void setUtilization8() {
+		utilization8++;
 	}
 
 }

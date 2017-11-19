@@ -1,17 +1,17 @@
 package view;
 
 public class Labels {
-	
+
 	String appHeader = "SuperMarket Simulator";
-	
+
 	String header1 = "Number of Checkouts";
-	
+
 	String header2 = "Max Products";
-	
+
 	String header3 = "Simulation Time";
-	
+
 	String button1 = "Simulate";
-	
+
 	String button2 = "Close";
 
 	/**
