@@ -12,7 +12,6 @@ public class NewCustomerObserver extends Observer {
 
 	@Override
 	public void update() throws IOException {
-
 		CreateExcelReport updateReport = new CreateExcelReport(subject);
 		System.out.println("Customer History " + (subject.getCustomerHistory()));
 	}

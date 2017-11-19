@@ -41,12 +41,13 @@ public class ThreadController implements Ithread {
 	Thread prodd = new Thread();
 
 	@SuppressWarnings({ "rawtypes" })
-	public ThreadController(int maxProducts, int number_of_Checkout, int simulationTime) 
+	public ThreadController(int maxProducts, int number_of_Checkout, int simulationTime, Boolean scanners) 
 	{
 		UserInputs userInputs = new UserInputs();
 		userInputs.setSetNumOfCashiers(number_of_Checkout);
 		userInputs.setMaximumProducts(maxProducts);
 		userInputs.setSimulationTime(simulationTime);
+		userInputs.setScanner(scanners);
 		
 		int NumOfCashiers = userInputs.getSetNumOfCashiers();
 		Cashier[] consumer = new Cashier[NumOfCashiers];

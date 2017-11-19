@@ -27,8 +27,12 @@ public class Calculator {
 
 	static int a[] = new int[8];
 
+	/* Utilization for each customer */
 	static int utilization1, utilization2, utilization3, utilization4, utilization5, utilization6, utilization7,
 			utilization8 = 0;
+
+	static long waitTimeForCashier8, waitTimeForCashier7, waitTimeForCashier6, waitTimeForCashier5, waitTimeForCashier4,
+			waitTimeForCashier3, waitTimeForCashier2, waitTimeForCashier1 = 0;
 
 	UserInputs userInputs = new UserInputs();
 
@@ -37,9 +41,11 @@ public class Calculator {
 
 	static int sum;
 	float startTime = 0;
-	static int averageProductsPerTrolly = 0;
 	static int customerLost = 0;
 	static double totalWaitTime = 0.0;
+
+	/* Average Products */
+	static int averageProducts = 0;
 
 	public Calculator(long start) {
 		startTime = start;
@@ -52,18 +58,6 @@ public class Calculator {
 	public float getStartTime() {
 		return startTime;
 	}
-
-	// public float waitTime() {
-	// int waitTime = random.nextInt(60);
-	//// int wait = waitTime;
-	//// Thread.sleep(wait + 100);
-	// waitingTime = waitingTime + waitTime;
-	// setAverageProductsPerTrolly();
-	// waitingTime = waitingTime / total;
-	// totalWaitTime = totalWaitTime + waitTime; // To be Corrected //
-	//
-	// return waitingTime;
-	// }
 
 	public double totTime() {
 		return totalWaitTime;
@@ -154,7 +148,7 @@ public class Calculator {
 	/**
 	 * @return the utilization1
 	 */
-	public synchronized static int getUtilization1() {
+	public synchronized int getUtilization1() {
 		return utilization1;
 	}
 
@@ -162,14 +156,14 @@ public class Calculator {
 	 * @param utilization1
 	 *            the utilization1 to set
 	 */
-	public synchronized static void setUtilization1() {
+	public synchronized void setUtilization1() {
 		utilization1++;
 	}
 
 	/**
 	 * @return the utilization2
 	 */
-	public synchronized static int getUtilization2() {
+	public synchronized int getUtilization2() {
 		return utilization2;
 	}
 
@@ -177,14 +171,14 @@ public class Calculator {
 	 * @param utilization2
 	 *            the utilization2 to set
 	 */
-	public synchronized static void setUtilization2() {
+	public synchronized void setUtilization2() {
 		utilization2++;
 	}
 
 	/**
 	 * @return the utilization3
 	 */
-	public synchronized static int getUtilization3() {
+	public synchronized int getUtilization3() {
 		return utilization3;
 	}
 
@@ -192,14 +186,14 @@ public class Calculator {
 	 * @param utilization3
 	 *            the utilization3 to set
 	 */
-	public synchronized static void setUtilization3() {
+	public synchronized void setUtilization3() {
 		utilization3++;
 	}
 
 	/**
 	 * @return the utilization4
 	 */
-	public synchronized static int getUtilization4() {
+	public synchronized int getUtilization4() {
 		return utilization4;
 	}
 
@@ -207,14 +201,14 @@ public class Calculator {
 	 * @param utilization4
 	 *            the utilization4 to set
 	 */
-	public synchronized static void setUtilization4() {
+	public synchronized void setUtilization4() {
 		utilization4++;
 	}
 
 	/**
 	 * @return the utilization5
 	 */
-	public synchronized static int getUtilization5() {
+	public synchronized int getUtilization5() {
 		return utilization5;
 	}
 
@@ -222,14 +216,14 @@ public class Calculator {
 	 * @param utilization5
 	 *            the utilization5 to set
 	 */
-	public synchronized static void setUtilization5() {
+	public synchronized void setUtilization5() {
 		utilization5++;
 	}
 
 	/**
 	 * @return the utilization6
 	 */
-	public synchronized static int getUtilization6() {
+	public synchronized int getUtilization6() {
 		return utilization6;
 	}
 
@@ -237,14 +231,14 @@ public class Calculator {
 	 * @param utilization6
 	 *            the utilization6 to set
 	 */
-	public synchronized static void setUtilization6() {
+	public synchronized void setUtilization6() {
 		utilization6++;
 	}
 
 	/**
 	 * @return the utilization7
 	 */
-	public synchronized static int getUtilization7() {
+	public synchronized int getUtilization7() {
 		return utilization7;
 	}
 
@@ -252,14 +246,14 @@ public class Calculator {
 	 * @param utilization7
 	 *            the utilization7 to set
 	 */
-	public synchronized static void setUtilization7() {
+	public synchronized void setUtilization7() {
 		utilization7++;
 	}
 
 	/**
 	 * @return the utilization8
 	 */
-	public synchronized static int getUtilization8() {
+	public synchronized int getUtilization8() {
 		return utilization8;
 	}
 
@@ -267,8 +261,135 @@ public class Calculator {
 	 * @param utilization8
 	 *            the utilization8 to set
 	 */
-	public synchronized static void setUtilization8() {
+	public synchronized void setUtilization8() {
 		utilization8++;
+	}
+
+	/**
+	 * @return the averageProducts
+	 */
+	public static int getAverageProducts() {
+		return averageProducts;
+	}
+
+	/**
+	 * @param averageProducts
+	 *            the averageProducts to set
+	 */
+	public void setAverageProducts(int averageProducts) {
+		Calculator.averageProducts = averageProducts;
+	}
+
+	/**
+	 * @return the waitTimeForCashier8
+	 */
+	public long getWaitTimeForCashier8() {
+		return waitTimeForCashier8;
+	}
+
+	/**
+	 * @param waitTimeForCashier8 the waitTimeForCashier8 to set
+	 */
+	public void setWaitTimeForCashier8(long waitTimeForCashier8) {
+		Calculator.waitTimeForCashier8 = waitTimeForCashier8;
+	}
+
+	/**
+	 * @return the waitTimeForCashier7
+	 */
+	public long getWaitTimeForCashier7() {
+		return waitTimeForCashier7;
+	}
+
+	/**
+	 * @param waitTimeForCashier7 the waitTimeForCashier7 to set
+	 */
+	public void setWaitTimeForCashier7(long waitTimeForCashier7) {
+		Calculator.waitTimeForCashier7 = waitTimeForCashier7;
+	}
+
+	/**
+	 * @return the waitTimeForCashier6
+	 */
+	public long getWaitTimeForCashier6() {
+		return Calculator.waitTimeForCashier6;
+	}
+
+	/**
+	 * @param waitTimeForCashier6 the waitTimeForCashier6 to set
+	 */
+	public void setWaitTimeForCashier6(long waitTimeForCashier6) {
+		Calculator.waitTimeForCashier6 = waitTimeForCashier6;
+	}
+
+	/**
+	 * @return the waitTimeForCashier5
+	 */
+	public long getWaitTimeForCashier5() {
+		return Calculator.waitTimeForCashier5;
+	}
+
+	/**
+	 * @param waitTimeForCashier5 the waitTimeForCashier5 to set
+	 */
+	public void setWaitTimeForCashier5(long waitTimeForCashier5) {
+		Calculator.waitTimeForCashier5 = waitTimeForCashier5;
+	}
+
+	/**
+	 * @return the waitTimeForCashier4
+	 */
+	public long getWaitTimeForCashier4() {
+		return Calculator.waitTimeForCashier4;
+	}
+
+	/**
+	 * @param waitTimeForCashier4 the waitTimeForCashier4 to set
+	 */
+	public void setWaitTimeForCashier4(long waitTimeForCashier4) {
+		Calculator.waitTimeForCashier4 = waitTimeForCashier4;
+	}
+
+	/**
+	 * @return the waitTimeForCashier3
+	 */
+	public long getWaitTimeForCashier3() {
+		return waitTimeForCashier3;
+	}
+
+	/**
+	 * @param waitTimeForCashier3 the waitTimeForCashier3 to set
+	 */
+	public void setWaitTimeForCashier3(long waitTimeForCashier3) {
+		Calculator.waitTimeForCashier3 = waitTimeForCashier3;
+	}
+
+	/**
+	 * @return the waitTimeForCashier2
+	 */
+	public long getWaitTimeForCashier2() {
+		return waitTimeForCashier2;
+	}
+
+	/**
+	 * @param waitTimeForCashier2 the waitTimeForCashier2 to set
+	 */
+	public void setWaitTimeForCashier2(long waitTimeForCashier2) {
+		Calculator.waitTimeForCashier2 = waitTimeForCashier2;
+	}
+
+	/**
+	 * @return the waitTimeForCashier1
+	 */
+	public long getWaitTimeForCashier1() {
+		return waitTimeForCashier1;
+	}
+
+	/**
+	 * @param waitTimeForCashier1 the waitTimeForCashier1 to set
+	 */
+	public void setWaitTimeForCashier1(long waitTimeForCashier1) {
+		Calculator.waitTimeForCashier1 = waitTimeForCashier1;
 	}
 
 }

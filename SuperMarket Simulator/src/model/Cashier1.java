@@ -21,6 +21,7 @@ public class Cashier1 extends Cashier implements Runnable {
 	private BlockingQueue queue;
 	Thread consumer1 = new Thread();
 	UserInputs user = new UserInputs();
+	long a,b=0;
 
 	@SuppressWarnings("rawtypes")
 	public Cashier1(BlockingQueue q) {
@@ -28,6 +29,7 @@ public class Cashier1 extends Cashier implements Runnable {
 		this.queue = q;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void run() {
 
 		Customer customer = new Customer();
@@ -37,15 +39,21 @@ public class Cashier1 extends Cashier implements Runnable {
 				int time = customer.getWaitTime();
 				long end = System.currentTimeMillis();
 				customer.setExitTime(end);
+				
 				value = (Customer) ((BlockingQueue) queue).take();
-				if (value != null) {
-					Thread.sleep(time + 1000);
-					Calculator.setUtilization1();
+				a = value.exitTime;
+				b = value.entryTime;
+				
+				c.setWaitTimeForCashier1(a-b);
+				
+				if (value.numberOfProducts > 0) {
+					Thread.sleep(value.waitTime + 1000);
+					c.setUtilization1();
 				}
 
 				/* Information being stored inside the calculator class */
 				c.setTotalCustomers();
-				new NewCustomerObserver(customerHistory);
+//				new NewCustomerObserver(customerHistory);
 				customerHistory.setCustomerHistory(customer.getNumberOfProducts(), time+1000);
 				Cashier.setTotalProductsProcessed1(customer.getNumberOfProducts());
 				c.setUtilization(index);

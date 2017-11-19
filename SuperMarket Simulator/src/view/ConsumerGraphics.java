@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import model.Cashier;
+import model.Cashier8;
 import model.Customer;
 import model.Feeder;
 import utility.Calculator;
@@ -43,7 +44,7 @@ public class ConsumerGraphics extends JFrame {
 
 	private void createFrame() {
 		this.setTitle(" Checkout Simulation ");
-		this.setSize(1200, 700);
+		this.setSize(1200, 850);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(true);
@@ -81,68 +82,76 @@ public class ConsumerGraphics extends JFrame {
 		try {
 			Calculator c = new Calculator();
 			ArrayList List = new ArrayList();
-			// List = (ArrayList) c.getUtilization();
-			// System.out.println(List);
 			ImageIcon counterImg = new ImageIcon("images/checkout.png");
 			for (int count = 0; count < checkOuts; count++) {
 				clerkPanel[count] = new JPanel();
-				clerkPanel[count].setBorder(BorderFactory.createLineBorder(Color.blue));
-				clerkPanel[count].setBackground(Color.CYAN);
 				if (count == 0) {
-					clerkPanel[count].add(new JLabel("<html><b>Express Lane</b><html> " + (count + 1)));
+					clerkPanel[count].setBorder(BorderFactory.createLineBorder(Color.blue));
+					clerkPanel[count].setBackground(Color.CYAN);
 					clerkPanel[count]
-							.add(new JLabel("<html><b>Utilization :</b><html>" + Calculator.getUtilization1()));
-					clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+							.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization1()));
+					clerkPanel[count]
+							.add(new JLabel("<html><b>Wait Time :</b><html>" + (int)c.getWaitTimeForCashier1()/1000));
 					clerkPanel[count].add(new JLabel("", (Icon) counterImg, SwingConstants.CENTER));
 
 				} else {
+					clerkPanel[count].setBorder(BorderFactory.createLineBorder(Color.blue));
+					clerkPanel[count].setBackground(Color.CYAN.darker());
 					switch (count) {
 					case 1:
 						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + Calculator.getUtilization2()));
-						clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization2()));
+						clerkPanel[count]
+								.add(new JLabel("<html><b>Wait Time :</b><html>" + (int)c.getWaitTimeForCashier2()/1000));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
 					case 2:
 						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + Calculator.getUtilization3()));
-						clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization3()));
+						clerkPanel[count]
+								.add(new JLabel("<html><b>Wait Time :</b><html>" + (int)c.getWaitTimeForCashier3()/1000));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
 					case 3:
 						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + Calculator.getUtilization4()));
-						clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization4()));
+						clerkPanel[count]
+								.add(new JLabel("<html><b>Wait Time :</b><html>" + (int)c.getWaitTimeForCashier4()/1000));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
 					case 4:
 						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + Calculator.getUtilization5()));
-						clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization5()));
+						clerkPanel[count]
+								.add(new JLabel("<html><b>Wait Time :</b><html>" + (int)c.getWaitTimeForCashier5()/1000));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
 					case 5:
 						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + Calculator.getUtilization6()));
-						clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization6()));
+						clerkPanel[count]
+								.add(new JLabel("<html><b>Wait Time :</b><html>" + (int)c.getWaitTimeForCashier6()/1000));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
 					case 6:
 						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + Calculator.getUtilization7()));
-						clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization7()));
+						clerkPanel[count]
+								.add(new JLabel("<html><b>Wait Time :</b><html>" + (int)c.getWaitTimeForCashier7()/1000));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
 					case 7:
 						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + Calculator.getUtilization8()));
-						clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization8()));
+//						clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
+						clerkPanel[count]
+								.add(new JLabel("<html><b>Wait Time :</b><html>" + (int)c.getWaitTimeForCashier8()/1000));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
@@ -201,14 +210,13 @@ public class ConsumerGraphics extends JFrame {
 			infoPanel.add(new JLabel(ca.getTotal() + "", SwingConstants.LEFT));
 
 			infoPanel.add(new JLabel("Average wait time for customer:"));
-			// infoPanel.add(new JLabel(c.waitTime() + "", SwingConstants.LEFT));
+//			infoPanel.add(new JLabel(c.waitTime() + "", SwingConstants.LEFT));
 
 			infoPanel.add(new JLabel("Average Utilization:"));
 			infoPanel.add(new JLabel(c.average() + "", SwingConstants.LEFT));
 
 			infoPanel.add(new JLabel("Average Products per trolly:"));
-			// infoPanel.add(new JLabel(c.getAverageProductsPerTrolly() + "",
-			// SwingConstants.LEFT));
+			infoPanel.add(new JLabel(ca.getTotal() / c.getTotalCustomers() + "", SwingConstants.LEFT));
 
 			infoPanel.add(new JLabel("Total Wait time for customers:"));
 			infoPanel.add(new JLabel(c.totTime() + "", SwingConstants.LEFT));

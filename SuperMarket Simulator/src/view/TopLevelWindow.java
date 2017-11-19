@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,6 +29,9 @@ public class TopLevelWindow {
 	/**
 	 * @throws IOException
 	 */
+
+	Boolean scanners = false;
+
 	public TopLevelWindow() throws IOException {
 
 		// Create and set up the window.
@@ -81,9 +85,16 @@ public class TopLevelWindow {
 		JButton closeButton = new JButton(label.getButton2());
 		closeButton.setBounds(180, 80, 80, 25);
 		panel.add(closeButton);
+
+		final JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Use Scanners");
+		chckbxNewCheckBox_1.setBounds(200, 100, 80, 25);
+		chckbxNewCheckBox_1.setVisible(true);
+		panel.add(chckbxNewCheckBox_1);
+
 		frame.revalidate();
 		frame.repaint();
 
+		/* Listener for Simulate */
 		simulate.addActionListener(new ActionListener() {
 			public int parserValues(JTextField input) {
 				int value = Integer.parseInt(input.getText());
@@ -93,14 +104,14 @@ public class TopLevelWindow {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Button was clicked");
 				ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
-				if (parserValues(maxProducts) > 200 || parserValues(Number_of_Checkout) > 8) {
+				if (parserValues(maxProducts) > 500 || parserValues(Number_of_Checkout) > 8) {
 					JOptionPane.showMessageDialog(null, "Please enter the data in the defined range", "ALERT",
 							JOptionPane.WARNING_MESSAGE);
 				} else {
 					exec.scheduleAtFixedRate(new Runnable() {
 						public void run() {
 							Ithread.threadinstantiate(parserValues(maxProducts), parserValues(Number_of_Checkout),
-									parserValues(simulationTimeField));
+									parserValues(simulationTimeField),scanners);
 						}
 					}, 0, 5, TimeUnit.SECONDS);
 				}
@@ -121,6 +132,15 @@ public class TopLevelWindow {
 
 				System.exit(0);
 
+			}
+		});
+
+		chckbxNewCheckBox_1.addActionListener(new ActionListener() {
+
+			@Override
+			/* Listener for check-box */
+			public void actionPerformed(ActionEvent arg0) {
+				scanners = true;
 			}
 		});
 

@@ -11,6 +11,7 @@ public class UserInputs {
 	static int setNumOfCashiers;
 	static int maximumProducts;
 	static int simulationTime;
+	static Boolean scanner;
 	
 	/**
 	 * @return the setNumOfCashiers
@@ -44,6 +45,20 @@ public class UserInputs {
 	 */
 	public int getSimulationTime() {
 		return simulationTime;
+	}
+
+	/**
+	 * @return the scanner
+	 */
+	public Boolean getScanner() {
+		return scanner;
+	}
+
+	/**
+	 * @param scanner the scanner to set
+	 */
+	public static void setScanner(Boolean scanner) {
+		UserInputs.scanner = scanner;
 	}
 
 }
