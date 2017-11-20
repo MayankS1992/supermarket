@@ -15,7 +15,7 @@ import utility.CustomerSubject;
 import view.TopLevelWindow;
 
 /**
- * @author Mayank
+ * @author Mayank, Chandan
  * 
  *        
  *         Entry point of the code.

@@ -2,11 +2,10 @@ package model;
 
 import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import utility.Calculator;
-import utility.NewCustomerObserver;
 import utility.UserInputs;
 
 public class Cashier6 extends Cashier implements Runnable {
@@ -36,16 +35,17 @@ public class Cashier6 extends Cashier implements Runnable {
 
 			try {
 				int time = customer.getWaitTime() + 50;
-				long end = System.currentTimeMillis();
+				long end = System.nanoTime();
 				customer.setExitTime(end);
 				
 				value = (Customer) ((BlockingQueue) queue).take();
 				a = (long) value.exitTime;
 				b = (long) value.entryTime;
-				c.setWaitTimeForCashier6(a - b);
+				c.setTotalTime(TimeUnit.NANOSECONDS.toSeconds(end-b));
+				c.setWaitTimeForCashier6(end - b);
 
 				if (value.numberOfProducts > 0) {
-					Thread.sleep(value.waitTime/factor);
+					Thread.sleep((value.waitTime/factor)+150);
 					c.setUtilization6();
 				}
 

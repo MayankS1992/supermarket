@@ -42,7 +42,7 @@ public class Calculator {
 	static int sum;
 	float startTime = 0;
 	static int customerLost = 0;
-	static double totalWaitTime = 0.0;
+	static long totalWaitTime = 0;
 
 	/* Average Products */
 	static int averageProducts = 0;
@@ -53,14 +53,6 @@ public class Calculator {
 
 	public Calculator() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public float getStartTime() {
-		return startTime;
-	}
-
-	public double totTime() {
-		return totalWaitTime;
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -98,14 +90,6 @@ public class Calculator {
 		return total;
 	}
 
-	public synchronized void setTotalProducts(int a) {
-		products += a;
-	}
-
-	public int getTotalProducts() {
-		return products;
-	}
-
 	double myRandom(double min, double max) {
 		Random r = new Random();
 		return (r.nextInt((int) ((max - min) * 10 + 1)) + min * 10) / 10.0;
@@ -122,14 +106,6 @@ public class Calculator {
 	public static void setA(int[] a) {
 		Calculator.a = a;
 	}
-
-	// public int getAverageProductsPerTrolly() {
-	// return averageProductsPerTrolly;
-	// }
-	//
-	// public void setAverageProductsPerTrolly() {
-	// averageProductsPerTrolly = products / total;
-	// }
 
 	@SuppressWarnings("rawtypes")
 	private static List<Integer> arrayListOfLostCustomers = new ArrayList<Integer>();
@@ -266,21 +242,6 @@ public class Calculator {
 	}
 
 	/**
-	 * @return the averageProducts
-	 */
-	public static int getAverageProducts() {
-		return averageProducts;
-	}
-
-	/**
-	 * @param averageProducts
-	 *            the averageProducts to set
-	 */
-	public void setAverageProducts(int averageProducts) {
-		Calculator.averageProducts = averageProducts;
-	}
-
-	/**
 	 * @return the waitTimeForCashier8
 	 */
 	public long getWaitTimeForCashier8() {
@@ -390,6 +351,15 @@ public class Calculator {
 	 */
 	public void setWaitTimeForCashier1(long waitTimeForCashier1) {
 		Calculator.waitTimeForCashier1 = waitTimeForCashier1;
+	}
+
+	public long setTotalTime(long seconds) {
+		totalWaitTime = totalWaitTime + seconds;
+		return  totalWaitTime;
+	}
+	
+	public long getTotalTime() {
+		return  totalWaitTime;
 	}
 
 }

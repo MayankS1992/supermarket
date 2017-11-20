@@ -19,9 +19,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import Controller.Ithread;
+import utility.Labels;
 
 /**
- * @author Mayank Graphics for the User Input page.
+ * @author Mayank, Chandan
+ * Graphics for the User Input page.
  *
  */
 
@@ -42,8 +44,6 @@ public class TopLevelWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel = new JPanel();
 		panel.setVisible(true);
-
-		frame.getContentPane().add(new JPanelWithBackground("images/bg.jpg"));
 		frame.add(panel);
 
 		frame.setVisible(true);
@@ -144,29 +144,5 @@ public class TopLevelWindow {
 			}
 		});
 
-	}
-
-	/**
-	 * @author Mayank Draws a background Image
-	 */
-	@SuppressWarnings("serial")
-
-	public class JPanelWithBackground extends JPanel {
-
-		private Image backgroundImage;
-
-		// Some code to initialize the background image.
-		// Here, we use the constructor to load the image. This
-		// can vary depending on the use case of the panel.
-		public JPanelWithBackground(String fileName) throws IOException {
-			backgroundImage = ImageIO.read(new File(fileName));
-		}
-
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-
-			// Draw the background image.
-			g.drawImage(backgroundImage, 0, 0, this);
-		}
 	}
 }

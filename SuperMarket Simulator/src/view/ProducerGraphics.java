@@ -13,7 +13,8 @@ import javax.swing.border.Border;
 import model.Customer;
 
 /**
- * @author Mayank The Class responsible for generation of graphics for the
+ * @author Mayank, Chandan
+ * The Class responsible for generation of graphics for the
  *         customers. Displays an icon where a customer is present and when the
  *         customer is absent shows null.
  */

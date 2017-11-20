@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -20,11 +21,11 @@ public class Customer {
 	/* exit time */
 	long exitTime;
 
-	/* TWait time for customers */
-	long waitTimeCustomer;
-
 	/* Total Products per trolley */
 	static int total;
+	
+	/* Total wait per trolley */
+	static int averageWaitTime;
 
 	/**
 	 * @return the numberOfProducts
@@ -71,18 +72,11 @@ public class Customer {
 	}
 
 	/**
-	 * @param start
+	 * @param date
 	 *            the entryTime to set
 	 */
-	public void setEntryTime(long start) {
-		this.entryTime = start;
-	}
-
-	/**
-	 * @return the waitTimeCustomer
-	 */
-	public long getWaitTimeCustomer() {
-		return waitTimeCustomer;
+	public void setEntryTime(long date) {
+		this.entryTime = date;
 	}
 
 	public int getTotal() {
@@ -111,6 +105,21 @@ public class Customer {
 	 */
 	public static void setTotal(int total) {
 		Customer.total = total;
+	}
+
+	/**
+	 * @return the totalWaitTime
+	 */
+	public static int getTotalWaitTime() {
+		return averageWaitTime;
+	}
+
+	/**
+	 * @param totalWaitTime the totalWaitTime to set
+	 */
+	public static void setTotalWaitTime(int totalWaitTime) {
+		
+		Customer.averageWaitTime = totalWaitTime;
 	}
 
 }

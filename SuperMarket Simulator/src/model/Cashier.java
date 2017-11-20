@@ -8,7 +8,7 @@ import utility.CustomerSubject;
 import utility.UserInputs;
 
 /**
- * @author Mayank
+ * @author Mayank, Chandan
  *
  */
 public class Cashier implements Runnable {

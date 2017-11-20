@@ -40,21 +40,20 @@ public class Feeder implements Runnable {
 		while ((System.nanoTime() - start) <= (sim * 60000000000L))
 
 			try {
-				
+
 				qu = minimum(queue); // Smallest Queue generated
 				Customer customer = new Customer();
 				customer.setNumberOfProducts(MaxNumOfProducts);
 				customer.setWaitTime(customer.getNumberOfProducts());
-				long startingTime = System.currentTimeMillis();
-				/* Express Queue*/
-				
+				long startingTime = System.nanoTime();
+				/* Express Queue */
+
 				if (customer.getNumberOfProducts() < 10) {
 					if (queue[0].size() >= 6) {
-
 						calculations.setCustomerLost(MaxNumOfProducts);
 						// Frequency of express customers//
-						int waitTime = random.nextInt(60)+1;
-						Thread.sleep(waitTime+100);
+						int waitTime = random.nextInt(60) + 1;
+						Thread.sleep(waitTime + 100);
 					} else {
 						// Customer is put inside the queue
 						customer.setEntryTime(startingTime);
@@ -66,16 +65,20 @@ public class Feeder implements Runnable {
 					// Products in Cart more than 10
 				} else if (customer.getNumberOfProducts() > 10) {
 					if (qu.size() >= 6) {
+
 						calculations.setCustomerLost(MaxNumOfProducts);
 						int waitTime = random.nextInt(250);
 						Thread.sleep(waitTime + 100);
+
 					} else {
-						System.out.println(startingTime+"startTime");
+
+						System.out.println(startingTime + "startTime");
 						customer.setEntryTime(startingTime);
 						minimum(queue).put(customer);
 						// calculations.waitTime();
-						int waitTime = random.nextInt(60)+1;
+						int waitTime = random.nextInt(60) + 1;
 						Thread.sleep(waitTime);
+
 					}
 				}
 			} catch (InterruptedException ex) {

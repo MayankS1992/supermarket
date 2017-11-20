@@ -1,4 +1,4 @@
-package view;
+package utility;
 
 public class Labels {
 

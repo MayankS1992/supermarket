@@ -22,7 +22,7 @@ import view.ConsumerGraphics;
 
 
 /**
- * @author Mayank
+ * @author Mayank, Chandan
  * The threads are executed as per the user input.
  * Notifies the consumerGraph to create graphics for the producer and consumer so created here.
  *
