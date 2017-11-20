@@ -22,6 +22,7 @@ public class Cashier3 extends Cashier implements Runnable {
 		this.queue = q;
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void run() {
 
 		Customer customer = new Customer();

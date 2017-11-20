@@ -13,7 +13,6 @@ import model.Feeder;
 import utility.Calculator;
 import utility.UserInputs;
 
-
 public class ConsumerGraphics extends JFrame {
 
 	/**
@@ -89,70 +88,94 @@ public class ConsumerGraphics extends JFrame {
 				if (count == 0) {
 					clerkPanel[count].setBorder(BorderFactory.createLineBorder(Color.blue));
 					clerkPanel[count].setBackground(Color.CYAN);
-					clerkPanel[count]
-							.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization1()));
-					clerkPanel[count]
-							.add(new JLabel("<html><b>Wait Time :</b><html>" + TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier1())));
+					clerkPanel[count].add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization1()));
+					clerkPanel[count].add(new JLabel("<html><b>Wait Time :</b><html>"
+							+ TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier1())));
 					clerkPanel[count].add(new JLabel("", (Icon) counterImg, SwingConstants.CENTER));
 
 				} else {
-					clerkPanel[count].setBorder(BorderFactory.createLineBorder(Color.blue));
-					clerkPanel[count].setBackground(Color.CYAN.darker());
 					switch (count) {
 					case 1:
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization2()));
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Wait Time :</b><html>" + TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier2())));
+						clerkPanel[count].setBorder(BorderFactory.createLineBorder(Color.blue));
+						clerkPanel[count].setBackground(Color.CYAN.darker());
+						clerkPanel[count].add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization2()));
+						clerkPanel[count].add(new JLabel("<html><b>Wait Time :</b><html>"
+								+ TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier2())));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
 					case 2:
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization3()));
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Wait Time :</b><html>" + TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier3())));
+						clerkPanel[count].setBorder(BorderFactory.createLineBorder(Color.blue));
+						clerkPanel[count].setBackground(Color.CYAN.darker());
+						clerkPanel[count].add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization3()));
+						clerkPanel[count].add(new JLabel("<html><b>Wait Time :</b><html>"
+								+ TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier3())));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
 					case 3:
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization4()));
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Wait Time :</b><html>" + TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier4())));
+						clerkPanel[count].setBorder(BorderFactory.createLineBorder(Color.blue));
+						clerkPanel[count].setBackground(Color.CYAN.darker());
+						clerkPanel[count].add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization4()));
+						clerkPanel[count].add(new JLabel("<html><b>Wait Time :</b><html>"
+								+ TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier4())));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
 					case 4:
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization5()));
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Wait Time :</b><html>" + TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier5())));
+						clerkPanel[count].setBorder(BorderFactory.createLineBorder(Color.blue));
+						clerkPanel[count].setBackground(Color.CYAN.darker());
+						clerkPanel[count].add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization5()));
+						clerkPanel[count].add(new JLabel("<html><b>Wait Time :</b><html>"
+								+ TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier5())));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
 					case 5:
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization6()));
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Wait Time :</b><html>" + TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier6())));
+						clerkPanel[count].setBorder(BorderFactory.createLineBorder(Color.blue));
+						if(userInputs.getScanner())
+						{
+							clerkPanel[count].setBackground(Color.ORANGE.darker());
+						}
+						else
+						{
+							clerkPanel[count].setBackground(Color.CYAN.darker());
+						}
+						clerkPanel[count].add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization6()));
+						clerkPanel[count].add(new JLabel("<html><b>Wait Time :</b><html>"
+								+ TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier6())));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
 					case 6:
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization7()));
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Wait Time :</b><html>" + TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier7())));
+						clerkPanel[count].setBorder(BorderFactory.createLineBorder(Color.blue));
+						if(userInputs.getScanner())
+						{
+							clerkPanel[count].setBackground(Color.ORANGE.darker());
+						}
+						else
+						{
+							clerkPanel[count].setBackground(Color.CYAN.darker());
+						}
+						clerkPanel[count].add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization7()));
+						clerkPanel[count].add(new JLabel("<html><b>Wait Time :</b><html>"
+								+ TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier7())));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
 					case 7:
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization8()));
-//						clerkPanel[count].add(new JLabel("<html><br></html>", SwingConstants.CENTER));
-						clerkPanel[count]
-								.add(new JLabel("<html><b>Wait Time :</b><html>" + TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier8())));
+						clerkPanel[count].setBorder(BorderFactory.createLineBorder(Color.blue));
+						if(userInputs.getScanner())
+						{
+							clerkPanel[count].setBackground(Color.ORANGE.darker());
+						}
+						else
+						{
+							clerkPanel[count].setBackground(Color.CYAN.darker());
+						}
+						clerkPanel[count].add(new JLabel("<html><b>Utilization :</b><html>" + c.getUtilization8()));
+						clerkPanel[count].add(new JLabel("<html><b>Wait Time :</b><html>"
+								+ TimeUnit.NANOSECONDS.toSeconds(c.getWaitTimeForCashier8())));
 						clerkPanel[count]
 								.add(new JLabel("Checkout " + (count + 1), (Icon) counterImg, SwingConstants.CENTER));
 						break;
@@ -211,7 +234,7 @@ public class ConsumerGraphics extends JFrame {
 			infoPanel.add(new JLabel(ca.getTotal() + "", SwingConstants.LEFT));
 
 			infoPanel.add(new JLabel("Average wait time for customer:"));
-			infoPanel.add(new JLabel(c.getTotalTime()/c.getTotalCustomers() + "", SwingConstants.LEFT));
+			infoPanel.add(new JLabel(c.getTotalTime() / c.getTotalCustomers() + "", SwingConstants.LEFT));
 
 			infoPanel.add(new JLabel("Average Utilization:"));
 			infoPanel.add(new JLabel(c.average() + "", SwingConstants.LEFT));
@@ -219,8 +242,8 @@ public class ConsumerGraphics extends JFrame {
 			infoPanel.add(new JLabel("Average Products per trolly:"));
 			infoPanel.add(new JLabel(ca.getTotal() / c.getTotalCustomers() + "", SwingConstants.LEFT));
 
-//			infoPanel.add(new JLabel("Total Wait time for customers:"));
-//			infoPanel.add(new JLabel(c.totTime() + "", SwingConstants.LEFT));
+			// infoPanel.add(new JLabel("Total Wait time for customers:"));
+			// infoPanel.add(new JLabel(c.totTime() + "", SwingConstants.LEFT));
 
 			infoPanel.setFont(font);
 		} catch (Exception e) {
