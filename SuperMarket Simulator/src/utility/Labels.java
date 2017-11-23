@@ -1,5 +1,6 @@
 package utility;
 
+ 
 public class Labels {
 
 	String appHeader = "SuperMarket Simulator";

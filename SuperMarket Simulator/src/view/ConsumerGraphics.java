@@ -224,22 +224,22 @@ public class ConsumerGraphics extends JFrame {
 			infoPanel.removeAll();
 			Font font = new Font("Verdana", Font.BOLD, 8);
 			infoPanel.setBorder(BorderFactory.createLineBorder(Color.blue));
-			infoPanel.add(new JLabel("no of customers:"));
+			infoPanel.add(new JLabel("No of customers:"));
 			infoPanel.add(new JLabel(c.getTotalCustomers() + "", SwingConstants.LEFT));
 
 			infoPanel.add(new JLabel("Lost Customers:"));
 			infoPanel.add(new JLabel(c.getCustomerLost() + "", SwingConstants.LEFT));
 
-			infoPanel.add(new JLabel("no of products"));
+			infoPanel.add(new JLabel("No of products"));
 			infoPanel.add(new JLabel(ca.getTotal() + "", SwingConstants.LEFT));
 
-			infoPanel.add(new JLabel("Average wait time for customer:"));
+			infoPanel.add(new JLabel("Average wait time:"));
 			infoPanel.add(new JLabel(c.getTotalTime() / c.getTotalCustomers() + "", SwingConstants.LEFT));
 
 			infoPanel.add(new JLabel("Average Utilization:"));
 			infoPanel.add(new JLabel(c.average() + "", SwingConstants.LEFT));
 
-			infoPanel.add(new JLabel("Average Products per trolly:"));
+			infoPanel.add(new JLabel("Average Products:"));
 			infoPanel.add(new JLabel(ca.getTotal() / c.getTotalCustomers() + "", SwingConstants.LEFT));
 
 			// infoPanel.add(new JLabel("Total Wait time for customers:"));

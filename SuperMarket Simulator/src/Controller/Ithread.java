@@ -1,7 +1,7 @@
 package Controller;
 
 /**
- * @author Mayank Interface for implementing the Thread Controller
+ * @author Mayank 
  */
 public interface Ithread {
 	public static void threadinstantiate(int maxProducts, int number_of_Checkout, int i, Boolean scanners) {

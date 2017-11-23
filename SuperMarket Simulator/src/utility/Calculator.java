@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * @author Mayank Getters and setters for the calculations
+ * @author Mayank , Chandan
+ * 
+ * Getters and setters for the calculations
  */
 public class Calculator {
 

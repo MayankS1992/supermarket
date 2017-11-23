@@ -17,7 +17,7 @@ import view.TopLevelWindow;
  */
 public class MainClass {
 
-	public static void main(String args[]) {
+	public static void main(String args[]) { 
 		
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -34,7 +34,7 @@ public class MainClass {
 				}
 			}
 		} catch (Exception e) {
-			// If Nimbus is not available, you can set the GUI to another look and feel.
+			e.printStackTrace();
 		}
 	}
 }
