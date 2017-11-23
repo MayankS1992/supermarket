@@ -31,10 +31,11 @@ public class Cashier5 extends Cashier implements Runnable {
 				int time = customer.getWaitTime() + 50;
 				long end = System.nanoTime();
 				customer.setExitTime(end);
-				
+
 				value = (Customer) ((BlockingQueue) queue).take();
 				a = (long) value.exitTime;
 				b = (long) value.entryTime;
+				
 				c.setTotalTime(TimeUnit.NANOSECONDS.toSeconds(end-b));
 				c.setWaitTimeForCashier5(end - b);
 
@@ -42,6 +43,7 @@ public class Cashier5 extends Cashier implements Runnable {
 					Thread.sleep(value.waitTime + 150);
 					c.setUtilization5();
 				}
+
 
 				/* Information being stored inside the calculator class */
 				c.setTotalCustomers();

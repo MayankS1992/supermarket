@@ -60,7 +60,7 @@ public class Customer {
 	 */
 	public void setWaitTime(int products) {
 		Random random = new Random();
-		int rand = random.nextInt(10) + 1;
+		int rand = random.nextInt(15) + 1;
 		waitTime = (products * rand);
 	}
 

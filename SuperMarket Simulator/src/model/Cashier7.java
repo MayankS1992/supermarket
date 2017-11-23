@@ -2,7 +2,6 @@ package model;
 
 import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,7 +39,6 @@ public class Cashier7 extends Cashier implements Runnable {
 				value = (Customer) ((BlockingQueue) queue).take();
 				a = value.exitTime;
 				b = value.entryTime;
-				c.setTotalTime(TimeUnit.NANOSECONDS.toSeconds(end-b));
 				c.setWaitTimeForCashier7(end - b);
 
 				if (value.numberOfProducts > 0) {

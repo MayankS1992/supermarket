@@ -242,8 +242,8 @@ public class ConsumerGraphics extends JFrame {
 			infoPanel.add(new JLabel("Average Products:"));
 			infoPanel.add(new JLabel(ca.getTotal() / c.getTotalCustomers() + "", SwingConstants.LEFT));
 
-			// infoPanel.add(new JLabel("Total Wait time for customers:"));
-			// infoPanel.add(new JLabel(c.totTime() + "", SwingConstants.LEFT));
+			infoPanel.add(new JLabel("Total Wait time for customers:"));
+			infoPanel.add(new JLabel(c.getTotalTime() + "", SwingConstants.LEFT));
 
 			infoPanel.setFont(font);
 		} catch (Exception e) {

@@ -31,10 +31,11 @@ public class Cashier3 extends Cashier implements Runnable {
 				int time = customer.getWaitTime()+50;
 				long end = System.nanoTime();
 				customer.setExitTime(end);
-
+				
 				value = (Customer) ((BlockingQueue) queue).take();
 				a = (long) value.exitTime;
 				b = (long) value.entryTime;
+				
 				c.setTotalTime(TimeUnit.NANOSECONDS.toSeconds(end-b));
 				c.setWaitTimeForCashier3(end - b);
 

@@ -46,7 +46,7 @@ public class Cashier1 extends Cashier implements Runnable {
 				c.setWaitTimeForCashier1(end-b);
 				
 				if (value.numberOfProducts > 0) {
-					Thread.sleep(value.waitTime + 400);
+					Thread.sleep(value.waitTime + 250);
 					c.setUtilization1();
 				}
 

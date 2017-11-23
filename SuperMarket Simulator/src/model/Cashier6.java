@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import utility.Calculator;
 import utility.UserInputs;
 
 public class Cashier6 extends Cashier implements Runnable {
@@ -37,6 +38,12 @@ public class Cashier6 extends Cashier implements Runnable {
 				int time = customer.getWaitTime() + 50;
 				long end = System.nanoTime();
 				customer.setExitTime(end);
+				value = (Customer) ((BlockingQueue) queue).take();
+				if(value != null)
+				{
+					Thread.sleep(time+1000);
+					c.setUtilization6();
+				}
 				
 				value = (Customer) ((BlockingQueue) queue).take();
 				a = (long) value.exitTime;

@@ -14,7 +14,7 @@ public class Cashier8 extends Cashier implements Runnable {
 	Thread consumer8 = new Thread();
 	UserInputs userInputs = new UserInputs();
 	Cashier[] consumer = new Cashier[userInputs.getSetNumOfCashiers()];
-	long a,b=0;
+	long a, b = 0;
 	int factor = 1;
 
 	@SuppressWarnings("rawtypes")
@@ -26,34 +26,33 @@ public class Cashier8 extends Cashier implements Runnable {
 	@SuppressWarnings("rawtypes")
 	public void run() {
 		Customer customer = new Customer();
-		
-		if(userInputs.getScanner())
-		{
+
+		if (userInputs.getScanner()) {
 			factor = 2;
 		}
-		
+
 		while ((System.nanoTime() - start) <= (sim * 60000000000L))
 
 			try {
 				int time = customer.getWaitTime() + 50;
 				long end = System.nanoTime();
 				customer.setExitTime(end);
-				
+
 				value = (Customer) ((BlockingQueue) queue).take();
 				a = value.exitTime;
 				b = value.entryTime;
-				c.setTotalTime(TimeUnit.NANOSECONDS.toSeconds(end-b));
-				c.setWaitTimeForCashier8(end-b);
-				
-				if (value.numberOfProducts>0) {
+				c.setTotalTime(TimeUnit.NANOSECONDS.toSeconds(end - b));
+				c.setWaitTimeForCashier8(end - b);
+
+				if (value.numberOfProducts > 0) {
 					System.out.println(time);
-					Thread.sleep((value.waitTime/factor)+150);
+					Thread.sleep((value.waitTime / factor) + 150);
 					c.setUtilization8();
 				}
 
 				/* Information being stored inside the calculator class */
 				c.setTotalCustomers();
-//				new NewCustomerObserver(customerHistory);
+				// new NewCustomerObserver(customerHistory);
 				customerHistory.setCustomerHistory(c.getTotalCustomers(), time);
 				Cashier.setTotalProductsProcessed8(customer.getNumberOfProducts());
 				c.setUtilization(index);
@@ -62,5 +61,5 @@ public class Cashier8 extends Cashier implements Runnable {
 				Logger.getLogger(Cashier.class.getName()).log(Level.SEVERE, null, ex);
 			}
 	}
-	
+
 }

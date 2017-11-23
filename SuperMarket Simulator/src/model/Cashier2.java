@@ -32,6 +32,7 @@ public class Cashier2 extends Cashier implements Runnable {
 				long end = System.nanoTime();
 				customer.setExitTime(end);
 
+
 				value = (Customer) ((BlockingQueue) queue).take();
 				a = value.exitTime;
 				b = value.entryTime;

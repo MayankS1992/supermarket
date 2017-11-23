@@ -35,7 +35,8 @@ public class Cashier4 extends Cashier implements Runnable {
 				value = (Customer) ((BlockingQueue) queue).take();
 				a = (long) value.exitTime;
 				b = (long) value.entryTime;
-				c.setTotalTime(TimeUnit.NANOSECONDS.toSeconds(end-b));
+				
+				c.setTotalTime(TimeUnit.NANOSECONDS.toSeconds(end - b));
 				c.setWaitTimeForCashier4(end - b);
 
 				if (value.numberOfProducts > 0) {
